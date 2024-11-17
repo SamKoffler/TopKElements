@@ -1,0 +1,15 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        my_dict = {}
+        for i in range(len(nums)):
+            if nums[i] not in my_dict:
+                my_dict[nums[i]] = 1
+            else:
+                my_dict[nums[i]] += 1
+        output_list = []
+        while k!=0:
+            max_key = max(my_dict, key=my_dict.get)
+            output_list.append(max_key)
+            my_dict.pop(max_key)
+            k-=1
+        return output_list
